@@ -51,6 +51,6 @@ O programa deve ser compilado e executado no **Dev-C++ para Windows**, padrão A
 - [x] AFD desenhado no JFLAP 
 - [x] `scanner()` em C implementado
 - [x] `main()` com os 9 testes obrigatórios
-- [ ] Testado no Dev-C++ Windows
-- [ ] Identificação dos integrantes no cabeçalho do `.c`
-- [ ] Zip final revisado e enviado
+- [x] Testado no Dev-C++ Windows
+- [x] Identificação dos integrantes no cabeçalho do `.c`
+- [x] Zip final revisado e enviado
