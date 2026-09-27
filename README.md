@@ -34,7 +34,7 @@ A entrega exige exatamente 9 chamadas à função `scanner`, com a string inicia
 | `-0,34` | P.FLUTUANTE COM SINAL |
 | `05,567` | ERRO |
 | `$5.567,78` | VALOR MONETÁRIO |
-| `-2.1` | P.FLUTUANTE COM SINAL |
+| `-2.1` | ERRO |
 
 ## Compilação
  
