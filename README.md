@@ -16,7 +16,7 @@ A função `scanner` deve ser implementada com rótulos e `goto` (modelo de cód
 |---|---|
 | Sofia Castelli | 10443550 |
 | Ana Gabrielle  | 10721801 |
-| _preencher_ | _preencher_ |
+| Isabella de Castro Jorge | 10409762 |
  
 ## Divisão do trabalho
 
