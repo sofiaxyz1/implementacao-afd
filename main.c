@@ -1,3 +1,13 @@
+/*
+ * Projeto 1 - Implementacao de A.F.D.
+ * Linguagens Formais e Automatos - 2026-2 - Mackenzie
+ *
+ * Integrantes:
+ *   Sofia Castelli   - RA 10443550
+ *   Ana Gabrielle    - RA 10721801
+ *   Isabella de Castro Jorge  - RA 10409762
+ */
+
 #include <stdio.h>
 
 #define _REJEITA_ 0
