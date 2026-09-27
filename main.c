@@ -43,7 +43,224 @@ int confereErro(char palavra[])
 
 int scanner(char palavra[])
 {
-    return _REJEITA_;
+    char c;
+    int i = 0;
+q0:
+    c = palavra[i++];
+    if (c == '-') goto q1;
+    else if (c == '$') goto q3;
+    else if (c >= '1' && c <= '9') goto q10;
+    else if (c == ',' || c == '.') goto q18;
+    else if (c == '0') goto q20;
+    else return (_REJEITA_);
+ 
+q1:
+    c = palavra[i++];
+    if (c == '0') goto q2;
+    else if (c >= '1' && c <= '9') goto q4;
+    else if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q2:
+    c = palavra[i++];
+    if (c == ',') goto q6;
+    else if ((c >= '0' && c <= '9') || c == '$' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q3:
+    c = palavra[i++];
+    if (c == '0') goto q12;
+    else if (c >= '1' && c <= '9') goto q16;
+    else if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q4: /* Inteiro com sinal - estado final */
+    c = palavra[i++];
+    if (c >= '0' && c <= '9') goto q4;
+    else if (c == '.') goto q5;
+    else if (c == ',') goto q6;
+    else if (c == '$' || c == '-') goto q18;
+    else if (c == '\0') return (_INTEIRO_COM_SINAL_);
+    else return (_REJEITA_);
+ 
+q5:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q26;
+    else return (_REJEITA_);
+ 
+q6:
+    c = palavra[i++];
+    if (c >= '1' && c <= '9') goto q7;
+    else if (c == '0') goto q8;
+    else if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q7: /* Ponto Flutuante com Sinal - estado final */
+    c = palavra[i++];
+    if (c >= '0' && c <= '9') goto q9;
+    else if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c == '\0') return (_P_FLUTUANTE_COM_SINAL_);
+    else return (_REJEITA_);
+ 
+q8:
+    c = palavra[i++];
+    if (c >= '1' && c <= '9') goto q9;
+    else if (c == '0' || c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q9: /* Ponto Flutuante com Sinal - estado final */
+    c = palavra[i++];
+    if ((c >= '0' && c <= '9') || c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c == '\0') return (_P_FLUTUANTE_COM_SINAL_);
+    else return (_REJEITA_);
+ 
+q10: /* Inteiro - estado final */
+    c = palavra[i++];
+    if (c >= '0' && c <= '9') goto q10;
+    else if (c == '.') goto q11;
+    else if (c == '$' || c == '-') goto q18;
+    else if (c == ',') goto q21;
+    else if (c == '\0') return (_INTEIRO_);
+    else return (_REJEITA_);
+ 
+q11:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q29;
+    else return (_REJEITA_);
+ 
+q12:
+    c = palavra[i++];
+    if (c == ',') goto q13;
+    else if ((c >= '0' && c <= '9') || c == '$' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q13:
+    c = palavra[i++];
+    if (c >= '0' && c <= '9') goto q14;
+    else if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q14:
+    c = palavra[i++];
+    if (c >= '0' && c <= '9') goto q15;
+    else if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else return (_REJEITA_);
+ 
+q15: /* Monetario - estado final */
+    c = palavra[i++];
+    if ((c >= '0' && c <= '9') || c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c == '\0') return (_VALOR_MONETARIO_);
+    else return (_REJEITA_);
+ 
+q16:
+    c = palavra[i++];
+    if (c == ',') goto q13;
+    else if (c >= '0' && c <= '9') goto q16;
+    else if (c == '.') goto q17;
+    else if (c == '$' || c == '-') goto q18;
+    else return (_REJEITA_);
+ 
+q17:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-') goto q18;
+    else if (c >= '0' && c <= '9') goto q32;
+    else return (_REJEITA_);
+ 
+q18: /* Poco (estado de erro, sem saidas) */
+    c = palavra[i++];
+    return (_REJEITA_);
+ 
+q20:
+    c = palavra[i++];
+    if ((c >= '0' && c <= '9') || c == '$' || c == '-' || c == '.') goto q18;
+    else if (c == ',') goto q21;
+    else return (_REJEITA_);
+ 
+q21:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c == '0') goto q22;
+    else if (c >= '1' && c <= '9') goto q25;
+    else return (_REJEITA_);
+ 
+q22:
+    c = palavra[i++];
+    if (c == '0' || c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '1' && c <= '9') goto q23;
+    else return (_REJEITA_);
+ 
+q23: /* Ponto Flutuante - estado final */
+    c = palavra[i++];
+    if ((c >= '0' && c <= '9') || c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c == '\0') return (_P_FLUTUANTE_);
+    else return (_REJEITA_);
+ 
+q25: /* Ponto Flutuante - estado final */
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q23;
+    else if (c == '\0') return (_P_FLUTUANTE_);
+    else return (_REJEITA_);
+ 
+q26:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q27;
+    else return (_REJEITA_);
+ 
+q27:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q28;
+    else return (_REJEITA_);
+ 
+q28: /* Inteiro com sinal - estado final */
+    c = palavra[i++];
+    if (c == '.') goto q5;
+    else if (c == ',') goto q6;
+    else if ((c >= '0' && c <= '9') || c == '$' || c == '-') goto q18;
+    else if (c == '\0') return (_INTEIRO_COM_SINAL_);
+    else return (_REJEITA_);
+ 
+q29:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q30;
+    else return (_REJEITA_);
+ 
+q30:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q31;
+    else return (_REJEITA_);
+ 
+q31:
+    c = palavra[i++];
+    if (c == '.') goto q11;
+    else if ((c >= '0' && c <= '9') || c == '$' || c == '-') goto q18;
+    else if (c == ',') goto q21;
+    else return (_REJEITA_);
+ 
+q32:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q34;
+    else return (_REJEITA_);
+ 
+q33:
+    c = palavra[i++];
+    if (c == ',') goto q13;
+    else if (c == '.') goto q16;
+    else if ((c >= '0' && c <= '9') || c == '$' || c == '-') goto q18;
+    else return (_REJEITA_);
+ 
+q34:
+    c = palavra[i++];
+    if (c == '$' || c == ',' || c == '-' || c == '.') goto q18;
+    else if (c >= '0' && c <= '9') goto q33;
+    else return (_REJEITA_);
 }
 
 void imprimeResultado(char palavra[], int resultado)
