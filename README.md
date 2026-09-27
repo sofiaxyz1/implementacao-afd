@@ -48,11 +48,9 @@ O programa deve ser compilado e executado no **Dev-C++ para Windows**, padrão A
 
 ## Status
  
-- [ ] AFD desenhado no JFLAP (por ramo)
-- [ ] Ramos testados individualmente no simulador do JFLAP
-- [ ] Integração dos 3 ramos em um único `.jff`
-- [ ] `scanner()` em C implementado
-- [ ] `main()` com os 9 testes obrigatórios
+- [x] AFD desenhado no JFLAP 
+- [x] `scanner()` em C implementado
+- [x] `main()` com os 9 testes obrigatórios
 - [ ] Testado no Dev-C++ Windows
 - [ ] Identificação dos integrantes no cabeçalho do `.c`
 - [ ] Zip final revisado e enviado
